@@ -30,6 +30,7 @@ import com.google.android.gms.location.*
 import com.google.android.gms.maps.model.*
 import kotlinx.android.synthetic.main.activity_maps.*
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.component.KoinApiExtension
 
 const val GEOFENCE_RADIUS_IN_METERS = 300.0
@@ -40,7 +41,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityMapsBinding
     private var mMap: GoogleMap? = null
-    private val viewModel : MapsViewModel by inject()
+    private val viewModel  by viewModel<MapsViewModel>()
 
     private val geoFencePointsListAdapter = GeoFencePointsListAdapter(object : OnItemClicked<GeoFencePointViewModel> {
         override fun onItemClicked(item: GeoFencePointViewModel) {
